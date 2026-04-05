@@ -1,21 +1,85 @@
-<h2>🎮 Oyun: Kliklə bal yığ!</h2>
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<title>Klik Oyunu</title>
 
-<p>Bal: <span id="score">0</span></p>
-<p>🏆 Rekord: <span id="highScore">0</span></p>
-<p>Coin: <span id="coin">0</span> 💰</p>
+<style>
+body {
+  background: linear-gradient(135deg, #1e1e2f, #3a3a5f);
+  color: white;
+  font-family: Arial;
+  text-align: center;
+  margin-top: 50px;
+}
 
-<button onclick="addScore()" style="font-size:22px; padding:15px;">
-🔥 Bas!
-</button>
+.box {
+  background: rgba(255,255,255,0.1);
+  padding: 20px;
+  border-radius: 20px;
+  width: 300px;
+  margin: auto;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
 
-<br><br>
+h2 {
+  margin-bottom: 20px;
+}
 
-<button onclick="buyUpgrade()" style="padding:10px;">
-💸 Upgrade (10 coin)
-</button>
+p {
+  font-size: 18px;
+}
+
+button {
+  margin-top: 10px;
+  font-size: 18px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.clickBtn {
+  background: #ff9800;
+  color: white;
+}
+
+.clickBtn:hover {
+  background: #e68900;
+  transform: scale(1.1);
+}
+
+.upgradeBtn {
+  background: #4caf50;
+  color: white;
+}
+
+.upgradeBtn:hover {
+  background: #3e8e41;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="box">
+  <h2>🎮 Klik Oyunu</h2>
+
+  <p>Bal: <span id="score">0</span></p>
+  <p>🏆 Rekord: <span id="highScore">0</span></p>
+  <p>💰 Coin: <span id="coin">0</span></p>
+
+  <button class="clickBtn" onclick="addScore()">🔥 Bas!</button>
+
+  <br><br>
+
+  <button class="upgradeBtn" onclick="buyUpgrade()">💸 Upgrade (10 coin)</button>
+</div>
 
 <audio id="clickSound">
-  <source src="mixkit-camera-shutter-click-1133.wav" type="audio/wav">
+  <source src="mixkit-camera-shutter-click-1133.wav">
 </audio>
 
 <script>
@@ -23,7 +87,6 @@ let score = 0;
 let coin = 0;
 let power = 1;
 
-// Rekordu götür
 let highScore = localStorage.getItem("highScore") || 0;
 document.getElementById("highScore").innerText = highScore;
 
@@ -34,7 +97,30 @@ function addScore() {
   document.getElementById("score").innerText = score;
   document.getElementById("coin").innerText = coin;
 
-  // Rekord yenilə
+  if(score > highScore){
+    highScore = score;
+    localStorage.setItem("highScore", highScore);
+    document.getElementById("highScore").innerText = highScore;
+  }
+
+  let sound = document.getElementById("clickSound");
+  sound.currentTime = 0;
+  sound.play();
+}
+
+function buyUpgrade() {
+  if(coin >= 10){
+    coin -= 10;
+    power++;
+    document.getElementById("coin").innerText = coin;
+  } else {
+    alert("Coin azdır!");
+  }
+}
+</script>
+
+</body>
+</html>  // Rekord yenilə
   if(score > highScore){
     highScore = score;
     localStorage.setItem("highScore", highScore);
