@@ -1,17 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>My Site</title>
-</head>
-<body style="text-align:center; background-color:lightblue;">
+<h2>🎮 Oyun: Kliklə bal yığ!</h2>
 
-  <h1>Salam menim saytım 🚀</h1>
-  <p>İlk saytım işləyir</p>
+<p>Bal: <span id="score">0</span></p>
 
-  <img src="images (6).jpeg" width="700">
-  <audio controls>
-  <source src="Sadiq Elxanolu - Mingevir Nur hrim Klip 2025.mp3" type="audio/mpeg">
+<button onclick="addScore()" style="font-size:20px; padding:10px;">
+  Bas!
+</button>
+<audio id="clickSound">
+  <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-</body>
-</html>
+<script>
+let score = 0;
+
+function addScore() {
+  score++;
+  document.getElementById("score").innerText = score;
+}
+</script>
