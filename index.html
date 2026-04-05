@@ -1,12 +1,9 @@
-<h2>🎮 Oyun: Kliklə bal yığ!</h2>
-
-<p>Bal: <span id="score">0</span></p>
-
 <button onclick="addScore()" style="font-size:20px; padding:10px;">
   Bas!
 </button>
+
 <audio id="clickSound">
-  <source src="mixkit-camera-shutter-click-1133.wav" type="audio/wav">
+  <source src="mixkit-camera-shutter-click.wav" type="audio/wav">
 </audio>
 
 <script>
@@ -15,5 +12,8 @@ let score = 0;
 function addScore() {
   score++;
   document.getElementById("score").innerText = score;
+
+  // SƏS OYNAT
+  document.getElementById("clickSound").play();
 }
 </script>
