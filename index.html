@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Site</title>
+</head>
+
+<body style="text-align:center;">
+
 <h2>🎮 Oyun: Kliklə bal yığ!</h2>
 
 <p style="font-size:20px;">Bal: <span id="score">0</span></p>
@@ -20,16 +28,16 @@ function addScore() {
   score++;
   document.getElementById("score").innerText = score;
 
-  // SƏS
   document.getElementById("clickSound").play();
 
-  // EFFEKT (rəng dəyişsin)
   document.body.style.background = 
     "hsl(" + (score * 20 % 360) + ", 70%, 80%)";
 
-  // 10 balda mesaj
   if(score == 10){
     alert("🔥 10 bala çatdın!");
   }
 }
 </script>
+
+</body>
+</html>
