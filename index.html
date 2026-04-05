@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>My Site</title>
+  <title>My Site</title>
 </head>
 
 <body style="text-align:center;">
 
+<h1>Salam mənim saytım 🚀</h1>
+
 <h2>🎮 Oyun: Kliklə bal yığ!</h2>
 
-<p style="font-size:20px;">Bal: <span id="score">0</span></p>
+<p>Bal: <span id="score">0</span></p>
 
-<button onclick="addScore()" 
-style="font-size:22px; padding:15px; border-radius:10px; background:orange; border:none;">
-  🔥 Bas!
+<button onclick="addScore()" style="font-size:22px; padding:15px;">
+🔥 Bas!
 </button>
 
 <br><br>
 
+<!-- SƏS (GİZLİ) -->
 <audio id="clickSound">
   <source src="mixkit-camera-shutter-click-1133.wav" type="audio/wav">
 </audio>
@@ -28,14 +30,10 @@ function addScore() {
   score++;
   document.getElementById("score").innerText = score;
 
-  document.getElementById("clickSound").play();
-
-  document.body.style.background = 
-    "hsl(" + (score * 20 % 360) + ", 70%, 80%)";
-
-  if(score == 10){
-    alert("🔥 10 bala çatdın!");
-  }
+  // SƏS OYNAT
+  let sound = document.getElementById("clickSound");
+  sound.currentTime = 0;
+  sound.play();
 }
 </script>
 
