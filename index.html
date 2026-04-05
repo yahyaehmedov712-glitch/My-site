@@ -85,9 +85,13 @@ button {
 
 <script>
 let score = 0;
-let coin = 0;
+let coin = localStorage.getItem("coin") || 0;
 let power = 1;
 
+// Ekrana yaz
+document.getElementById("coin").innerText = coin;
+
+// Rekord
 let highScore = localStorage.getItem("highScore") || 0;
 document.getElementById("highScore").innerText = highScore;
 
@@ -98,30 +102,10 @@ function addScore() {
   document.getElementById("score").innerText = score;
   document.getElementById("coin").innerText = coin;
 
-  if(score > highScore){
-    highScore = score;
-    localStorage.setItem("highScore", highScore);
-    document.getElementById("highScore").innerText = highScore;
-  }
+  // Coin yadda saxla
+  localStorage.setItem("coin", coin);
 
-  let sound = document.getElementById("clickSound");
-  sound.currentTime = 0;
-  sound.play();
-}
-
-function buyUpgrade() {
-  if(coin >= 10){
-    coin -= 10;
-    power++;
-    document.getElementById("coin").innerText = coin;
-  } else {
-    alert("Coin azdır!");
-  }
-}
-</script>
-
-</body>
-</html>  // Rekord yenilə
+  // Rekord
   if(score > highScore){
     highScore = score;
     localStorage.setItem("highScore", highScore);
@@ -138,9 +122,13 @@ function buyUpgrade() {
   if(coin >= 10){
     coin -= 10;
     power++;
+
     document.getElementById("coin").innerText = coin;
+
+    // coin yenilə
+    localStorage.setItem("coin", coin);
   } else {
     alert("Coin azdır!");
   }
 }
-</script>
+</script> 
