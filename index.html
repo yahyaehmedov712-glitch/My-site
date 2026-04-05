@@ -20,7 +20,11 @@
 <script>
 let score = 0;
 let coin = 0;
-let power = 1; // neçə bal versin
+let power = 1;
+
+// Rekordu götür
+let highScore = localStorage.getItem("highScore") || 0;
+document.getElementById("highScore").innerText = highScore;
 
 function addScore() {
   score += power;
@@ -29,20 +33,26 @@ function addScore() {
   document.getElementById("score").innerText = score;
   document.getElementById("coin").innerText = coin;
 
-  document.getElementById("clickSound").play();
+  // Rekord yenilə
+  if(score > highScore){
+    highScore = score;
+    localStorage.setItem("highScore", highScore);
+    document.getElementById("highScore").innerText = highScore;
+  }
+
+  // Səs
+  let sound = document.getElementById("clickSound");
+  sound.currentTime = 0;
+  sound.play();
 }
 
-// UPGRADE
 function buyUpgrade() {
   if(coin >= 10){
     coin -= 10;
-    power++; // daha çox bal verir
-
-    alert("🔥 Güc artdı! +" + power);
-
+    power++;
     document.getElementById("coin").innerText = coin;
   } else {
-    alert("❌ Kifayət qədər coin yoxdur!");
+    alert("Coin azdır!");
   }
 }
 </script>
