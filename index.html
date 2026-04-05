@@ -1,6 +1,13 @@
-<button onclick="addScore()" style="font-size:20px; padding:10px;">
-  Bas!
+<h2>🎮 Oyun: Kliklə bal yığ!</h2>
+
+<p style="font-size:20px;">Bal: <span id="score">0</span></p>
+
+<button onclick="addScore()" 
+style="font-size:22px; padding:15px; border-radius:10px; background:orange; border:none;">
+  🔥 Bas!
 </button>
+
+<br><br>
 
 <audio id="clickSound">
   <source src="mixkit-camera-shutter-click.wav" type="audio/wav">
@@ -13,7 +20,16 @@ function addScore() {
   score++;
   document.getElementById("score").innerText = score;
 
-  // SƏS OYNAT
+  // SƏS
   document.getElementById("clickSound").play();
+
+  // EFFEKT (rəng dəyişsin)
+  document.body.style.background = 
+    "hsl(" + (score * 20 % 360) + ", 70%, 80%)";
+
+  // 10 balda mesaj
+  if(score == 10){
+    alert("🔥 10 bala çatdın!");
+  }
 }
 </script>
